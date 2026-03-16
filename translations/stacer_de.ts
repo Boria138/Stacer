@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE" sourcelanguage="en_US">
+<TS version="2.1" language="de_DE" sourcelanguage="en">
 <context>
     <name>APTSourceEdit</name>
     <message>
@@ -93,7 +93,7 @@
     </message>
     <message>
         <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.ui" line="338"/>
-        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="95"/>
+        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="105"/>
         <source>Add Repository</source>
         <translation>Paketquelle hinzufügen</translation>
     </message>
@@ -108,22 +108,23 @@
         <translation>Zum Entfernen oder Bearbeiten auswählen.</translation>
     </message>
     <message>
-        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="24"/>
+        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="28"/>
+        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="32"/>
         <source>example %1</source>
         <translation>Beispiel %1</translation>
     </message>
     <message>
-        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="63"/>
+        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="73"/>
         <source>APT Repositories (%1)</source>
         <translation>APT Paketquellen (%1)</translation>
     </message>
     <message>
-        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="69"/>
+        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="79"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="75"/>
+        <location filename="../stacer/Pages/AptSourceManager/apt_source_manager_page.cpp" line="85"/>
         <source>Adding...</source>
         <translation>Hinzufügen...</translation>
     </message>
@@ -213,7 +214,7 @@
     <message>
         <location filename="../stacer/app.cpp" line="110"/>
         <source>Continue</source>
-        <translation>Fortsetzen</translation>
+        <translation>Ja, fortsetzen</translation>
     </message>
     <message>
         <location filename="../stacer/app.cpp" line="113"/>
@@ -458,7 +459,7 @@
     <message>
         <location filename="../stacer/feedback.ui" line="68"/>
         <source>Email Address</source>
-        <translation>E-Mail Adresse</translation>
+        <translation>E-Mail-Adresse</translation>
     </message>
     <message>
         <location filename="../stacer/feedback.ui" line="97"/>
@@ -483,7 +484,7 @@
     <message>
         <location filename="../stacer/feedback.cpp" line="46"/>
         <source>Email address is not valid !</source>
-        <translation>Keine gültige E-Mail Adresse!</translation>
+        <translation>Keine gültige E-Mail-Adresse!</translation>
     </message>
     <message>
         <location filename="../stacer/feedback.cpp" line="51"/>
@@ -714,7 +715,7 @@
     <message>
         <location filename="../stacer/Pages/Processes/processes_page.cpp" line="215"/>
         <source>Refresh (%1)</source>
-        <translation>Aktualisierung (%1)</translation>
+        <translation>Aktualisierung (%1) Sek</translation>
     </message>
 </context>
 <context>
@@ -780,7 +781,7 @@
     <message>
         <location filename="../stacer/Pages/Resources/resources_page.cpp" line="259"/>
         <source>%1 Minute Average: %2</source>
-        <translation>%1 Minute(n) Durchschnitt: %2</translation>
+        <translation>%1 Minuten-Durchschnitt: %2</translation>
     </message>
     <message>
         <location filename="../stacer/Pages/Resources/resources_page.cpp" line="307"/>
