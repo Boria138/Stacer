@@ -58,6 +58,13 @@ jobs:
         run: |
           bash ${{ github.workspace }}/release.sh
 
+      - name: Upload tarball
+        uses: actions/upload-artifact@v7
+        if: matrix.codename == 'jammy'
+        with:
+          name: stacer-${{ github.ref_name }}.tar.gz
+          path: ${{ github.workspace }}/release/stacer-*.tar.gz
+
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -132,6 +139,13 @@ jobs:
           PREVIOUS_TAG=$(git tag --sort=-v:refname | grep -v "^${GITHUB_REF_NAME}$" | head -n 1)
           echo "previous_tag=$PREVIOUS_TAG" >> $GITHUB_OUTPUT
 
+      - name: Download tarball
+        uses: actions/download-artifact@v8
+        with:
+          pattern: stacer-*.tar.gz
+          path: ${{ github.workspace }}/release/
+          merge-multiple: true
+
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -142,7 +156,7 @@ jobs:
       - name: Download Flatpak artifacts
         uses: actions/download-artifact@v8
         with:
-          pattern: flatpak-*
+          pattern: fr.quentium.stacer_*.flatpak
           path: ${{ github.workspace }}/release/
           merge-multiple: true
 
@@ -163,7 +177,7 @@ jobs:
             ${{ github.workspace }}/release/stacer_*.deb
             ${{ github.workspace }}/release/stacer-*.rpm
             ${{ github.workspace }}/release/Stacer-*.AppImage
-            ${{ github.workspace }}/release/fr.quentium.stacer-*.flatpak
+            ${{ github.workspace }}/release/fr.quentium.stacer_*.flatpak
 
       - name: Publish PPA package
         uses: yuezk/publish-ppa-package@main
