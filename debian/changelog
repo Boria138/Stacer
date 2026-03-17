@@ -1,3 +1,19 @@
+stacer (1.6.3-1) stable; urgency=medium
+
+  * New flatpak package & changed workflow to publish all builds
+  * Add APT-RPM support for ALT Linux, PCLinuxOS, Vine Linux (Thanks @Boria138) #31
+  * Better rpm packaging using cmake install & placeholders
+  * Match exact license with debian copyright #32
+  * Bump debian compat & automatic lib depends
+  * Increase CXX standard to 17 + target stdc & m libraries for clang
+  * Install translations in Stacer's own specific location
+  * New Crowdin updates (Thanks Henry2o1o) #30
+  * Update debian upstream contact & generic rules
+  * Bump GitHub Actions
+  * Build once in release + action update
+
+ -- Quentin Lienhardt <pro@quentium.fr>  Tue, 17 Mar 2026 13:00:00 +0100
+
 stacer (1.6.2-1) stable; urgency=medium
 
   * Hotfix for OpenGl & Vulkan direct dependency in Ubuntu 22.04 and lower

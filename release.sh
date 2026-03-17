@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=1.6.2
+VERSION=1.6.3
 DIR=stacer-$VERSION
 ARCH=$(uname -m)
 ARCH_DPKG=$(dpkg --print-architecture)
