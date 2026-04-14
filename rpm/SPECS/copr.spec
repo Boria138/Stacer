@@ -9,8 +9,15 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+
+%if 0%{?suse_version}
+BuildRequires:  gcc15-c++
+BuildRequires:  ninja
+BuildRequires:  update-desktop-files
+%else
 BuildRequires:  gcc-c++
 BuildRequires:  ninja-build
+%endif
 
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -22,9 +29,16 @@ BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Network)
 
 Requires:       hicolor-icon-theme
-Requires:       qt6-qttools%{?_isa}
+
+%if 0%{?suse_version}
+Requires:       qt6-charts
+Requires:       qt6-svg
+Requires:       qt6-linguist-devel
+%else
 Requires:       qt6-qtcharts%{?_isa}
 Requires:       qt6-svg%{?_isa}
+Requires:       qt6-qttools%{?_isa}
+%endif
 
 %description
 Monitor your system (CPU, memory, disk) in a graphical application (Qt).
@@ -35,17 +49,36 @@ can show network download/upload speeds/totals.
 %autosetup -n Stacer-%{version}
 
 %build
+%if 0%{?suse_version}
+export CXX=/usr/bin/g++-15
+
+cmake -G Ninja -S . -B build \
+    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+    -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build -j $(nproc)
+%else
 %cmake -G Ninja \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_BUILD_TYPE=Release
 
 %cmake_build
+%endif
 
 # Build translations
+%if 0%{?suse_version}
+%{_libdir}/qt6/bin/lrelease %{name}/%{name}.pro
+%else
 lrelease-qt6 %{name}/%{name}.pro
+%endif
 
 %install
+%if 0%{?suse_version}
+DESTDIR=%{buildroot} cmake --install build
+%suse_update_desktop_file -r %{name} System Monitor
+%else
 %cmake_install
+%endif
 
 %find_lang %{name} --with-qt
 
