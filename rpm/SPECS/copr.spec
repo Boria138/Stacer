@@ -14,9 +14,11 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gcc15-c++
 BuildRequires:  ninja
 BuildRequires:  update-desktop-files
+BuildRequires:  appstream-glib
 %else
 BuildRequires:  gcc-c++
 BuildRequires:  ninja-build
+BuildRequires:  libappstream-glib
 %endif
 
 BuildRequires:  cmake(Qt6Core)
@@ -33,11 +35,9 @@ Requires:       hicolor-icon-theme
 %if 0%{?suse_version}
 Requires:       qt6-charts
 Requires:       qt6-svg
-Requires:       qt6-linguist-devel
 %else
 Requires:       qt6-qtcharts%{?_isa}
 Requires:       qt6-svg%{?_isa}
-Requires:       qt6-qttools%{?_isa}
 %endif
 
 %description
@@ -83,6 +83,9 @@ DESTDIR=%{buildroot} cmake --install build
 %find_lang %{name} --with-qt
 
 %check
+%if ! (0%{?rhel} <= 9)
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml || true
+%endif
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files -f %{name}.lang
