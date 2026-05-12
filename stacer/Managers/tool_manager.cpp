@@ -46,9 +46,9 @@ QStringList ToolManager::getPackages() const
 {
     switch (PackageTool::currentPackageTool) {
         case PackageTool::PackageTools::APT:
-        case PackageTool::PackageTools::APT_RPM:
             return PackageTool::getDpkgPackages();
             break;
+        case PackageTool::PackageTools::APT_RPM:
         case PackageTool::PackageTools::YUM:
         case PackageTool::PackageTools::DNF:
             return PackageTool::getRpmPackages();
